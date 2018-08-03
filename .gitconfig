@@ -28,6 +28,7 @@
 	rea = remote add
 	ri = rebase -i
 	rih = rebase -i HEAD~10
+	rh =  reset --hard
 	sa = stash apply
 	sl = stash list
 	ss = stash save
