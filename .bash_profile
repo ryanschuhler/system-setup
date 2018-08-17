@@ -41,7 +41,6 @@
 
 #   Convenience variables
 #   -----------------------------
-    export jhk="joanhyokim"
     export az="allen-ziegenfus"
     export rs="ryanschuhler"
     export pc="phillipchan2"
@@ -49,6 +48,9 @@
     export jt="jotchon"
     export jk="justinsunho"
     export lshack="raftastrock"
+    export rp="lionah"
+    export wg="wesleygong"
+    export wh="westonhancock"
     export e61="ee-6.1.x"
     export e62="ee-6.2.x"
 
@@ -188,7 +190,7 @@ alias glsy='git ls | yank'
 alias gdt='git difftool'
 alias gprue='git pull --rebase upstream ee-6.2.x'
 alias gprum='git pull --rebase upstream master'
-alias ghprsj='gh pr -s joanhyokim -b ee-6.2.x'
+alias ghprsw='gh pr -s wesleygong -b ee-6.2.x'
 alias ghprsl='gh pr -s liferay'
 
 alias setJava6='export JAVA_HOME=/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home'
