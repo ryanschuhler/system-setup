@@ -1,1 +1,75 @@
-.aliases
+alias ap='alias | peco'
+alias b='blade'
+alias bgw='blade gw'
+alias bs='blade sh'
+alias d='docker'
+alias dc='docker-compose'
+alias dlf='docker logs -f'
+alias deit='docker exec -it'
+alias driteb='docker run -it --entrypoint bash'
+alias ea='vim ~/.aliases'
+alias ebrc='vim ~/.bashrc'
+alias egc='vim ~/.gitconfig'
+alias evrc='vim ~/.vim/vimrc'
+alias ezrc='vim ~/.zshrc'
+alias fv='fzf | xargs -o vim'
+alias g='git'
+alias ga='git aliases | peco | yank'
+alias gb='git branch | peco | yank'
+alias gcob='git co $(git br | peco)'
+alias gdt='git difftool'
+alias gdtum='git difftool upstream/master'
+alias gf='git files | yank'
+alias gfv='git files | yank | xargs -o vim'
+alias ghprsw='gh pr -s wesleygong -b ee-6.2.x'
+alias ghprsl='gh pr -s liferay'
+alias gl='git ls | peco | yank'
+alias glp='git log --pretty=format:%s'
+alias diff-tickets='git log prd..HEAD --pretty=oneline | perl -ne '"'"'{ /(\w+)-(\d+)/ && print "$1-$2\n" }'"'"' | sort | uniq'
+alias gr='gradle'
+alias gsa='git status | yank | xargs git add'
+alias hpb='history | cut -c 8- | peco | xargs -0 bash -c'
+alias hpy='history | cut -c 8- | peco | yank -lx'
+alias j6='export JAVA_HOME=/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home'
+alias j7='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home'
+alias j8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home'
+alias j10='export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home'
+alias prs='cd ~/repos/lfris-www && git pull --rebase upstream master && gh pr --no-color | yank | sed "s/#//" | xargs -o gh pr'
+alias s='spotify'
+alias sn='spotify next'
+alias sp='spotify pause'
+alias spl='spotify play'
+alias setbash='chsh -s /bin/bash'
+alias setzsh='chsh -s /usr/local/bin/zsh'
+alias sbrc='source ~/.bashrc'
+alias szrc='source ~/.zshrc'
+alias sf='find . -name "*" | grep -v node_modules | xargs csf'
+alias v='vim'
+alias v.='vim .'
+alias vh='vim ~'
+alias vw='vim ~/repos/lfris-www'
+alias scratch='vim ~/Documents/scratch.txt'
+alias www='cd ~/repos/lfris-www'
+
+export az="allen-ziegenfus"
+export dev="--project liferaywww-dev"
+export gh='node-gh'
+export jk="justinsunho"
+export jt="jotchon"
+export lr="--service liferay"
+export lshack="raftastrock"
+export prd="--project liferaywww-prd"
+export REVIEW_BASE="master"
+export rt="--remote testing"
+export rdr="--remote dr"
+export rg="protoEvangelion"
+export rs="ryanschuhler"
+export rp="lionah"
+export sm="steven-smith"
+export uat="--project liferaywww-uat"
+export wg="wesleygong"
+export wh="westonhancock"
+export ws="--service webserver"
+
+export PATH="$PATH:$HOME/Library/PackageManager/bin"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home
