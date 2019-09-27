@@ -1,6 +1,10 @@
 [user]
 	name = ryanschuhler
 	email = ryan.schuhler@liferay.com
+[core]
+    editor = vim
+	autocrlf = input
+	excludesfile = /Users/ryan/.gitignore_global
 [diff]
 	tool = vimdiff
 [merge]
@@ -10,8 +14,6 @@
 [alias]
 	aliases = "!git config -l | grep alias | cut -c 7-"
 	br = branch
-	bra = branch -a
-	brd = branch -d
 	brD = branch -D
 	ci = commit
 	cia = commit --amend
@@ -19,13 +21,17 @@
 	cob = checkout -b
 	cl = clone
 	cp = cherry-pick
-	dc = diff --cached
+    dc = diff --cached
+    files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
 	log = log --decorate --graph --date=short
 	l = log
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	re = remote
-	rea = remote add
+    rea = remote add
+    r = review
+    review = !vim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+    reviewone = !vim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
 	ri = rebase -i
 	rih = rebase -i HEAD~10
 	rh =  reset --hard
@@ -33,8 +39,12 @@
 	sl = stash list
 	ss = stash save
 	slog = log --pretty=oneline --abbrev-commit
-	st = status
-	po = push origin
-	pr = pull --rebase
+    st = status
+    stat = !git --no-pager diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
+    po = push origin
+    pom = push origin master
+    pu= push upstream
+    pum = push upstream master
+    pr = pull --rebase
 	pru = pull --rebase upstream
-	
+    prum = pull --rebase upstream master
