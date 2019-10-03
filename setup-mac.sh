@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# Install
-sudo apt install curl git nodejs peco tig yank vim zsh
-sudo npm install -g gh gh-jira
+# Install homebrew
+xcode-select --install
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Install Apps
+brew install curl git nodejs peco tig yank vim zsh
+npm install -g gh gh-jira
 
 # Download
 cd ~ && git clone https://github.com/ryanschuhler/system-setup.git
