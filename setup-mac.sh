@@ -1,4 +1,5 @@
 #!/bin/bash
+# To install remotely run `bash <(curl -sL https://raw.githubusercontent.com/ryanschuhler/system-setup/master/setup-mac.sh)`
 
 # Install homebrew
 xcode-select --install

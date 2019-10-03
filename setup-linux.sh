@@ -1,4 +1,5 @@
 #!/bin/bash
+# To install remotely run `bash <(curl -sL https://raw.githubusercontent.com/ryanschuhler/system-setup/master/setup-linux.sh)`
 
 # Install Apps
 apt-get install curl git nodejs peco tig yank vim zsh
