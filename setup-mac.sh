@@ -49,22 +49,22 @@ open https://github.com/settings/keys
 
 git clone git@github.com:ryanschuhler/system-setup.git ~/repos/
 
-ln -s ~/.aliases ~/system-setup/.aliases
+ln -s ~/repos/system-setup/.aliases ~/.aliases
 
-ln -s ~/.bash_profile ~/system-setup/.bash_profile
+ln -s ~/repos/system-setup/.bash_profile ~/.bash_profile
 source ~/.bash_profile
 
-ln -s ~/.bashrc ~/system-setup/.bashrc
+ln -s ~/repos/system-setup/.bashrc ~/.bashrc
 source ~/.bashrc
 
-ln -s ~/.gh.json ~/system-setup/.gh.json
+ln -s ~/repos/system-setup/.gh.json ~/.gh.json
 
-ln -s ~/.gitconfig ~/system-setup/.gitconfig
+ln -s ~/repos/system-setup/.gitconfig ~/.gitconfig
 source ~/.gitconfig
 
-ln -s ~/.vim ~/system-setup/.vim
+ln -s ~/repos/system-setup/.vim ~/.vim
 
-ln -s ~/.zshrc ~/system-setup/.zshrc
+ln -s ~/repos/system-setup/.zshrc ~/.zshrc
 source ~/.zshrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
