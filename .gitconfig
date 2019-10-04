@@ -1,5 +1,5 @@
 [user]
-	name = ryanschuhler
+	name = Ryan Schuhler 
 	email = ryan.schuhler@liferay.com
 [core]
     editor = vim
@@ -46,5 +46,7 @@
     pu= push upstream
     pum = push upstream master
     pr = pull --rebase
+	pro = pull --rebase origin
 	pru = pull --rebase upstream
+    prom = pull --rebase origin master
     prum = pull --rebase upstream master
