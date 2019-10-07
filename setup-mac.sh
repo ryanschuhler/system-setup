@@ -62,7 +62,10 @@ ln -s ~/repos/system-setup/.gh.json ~/.gh.json
 ln -s ~/repos/system-setup/.gitconfig ~/.gitconfig
 source ~/.gitconfig
 
-ln -s ~/repos/system-setup/.vim ~/.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+ln -s ~/repos/system-setup/.vimrc ~/.vimrc
+source ~/.vimrc
+vim +PluginInstall +qall
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ln -s ~/repos/system-setup/.oh-my-zsh ~/.oh-my-zsh
