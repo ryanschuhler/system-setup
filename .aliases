@@ -26,7 +26,7 @@ alias ghprsl='gh pr -s liferay'
 alias gl='git ls | peco | yank'
 alias glp='git log --pretty=format:%s'
 alias diff-tickets='git log prd..HEAD --pretty=oneline | perl -ne '"'"'{ /(\w+)-(\d+)/ && print "$1-$2\n" }'"'"' | sort | uniq'
-alias gr='gradle'
+alias gw='~/repos/lfris-www/gradlew'
 alias gsa='git status | yank | xargs git add'
 alias hpb='history | cut -c 8- | peco | xargs -0 bash -c'
 alias hpy='history | cut -c 8- | peco | yank -lx'
@@ -70,6 +70,3 @@ export uat="--project liferaywww-uat"
 export wg="wesleygong"
 export wh="westonhancock"
 export ws="--service webserver"
-
-export PATH="$PATH:$HOME/Library/PackageManager/bin"
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home

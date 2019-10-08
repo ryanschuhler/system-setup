@@ -9,6 +9,8 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew install curl git nodejs peco tig vim wget yank zsh
 npm install -g gh gh-jira
 
+brew cask install java
+
 wget https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg -O ~/Downloads/googlechrome.dmg
 open ~/Downloads/googlechrome.dmg
 
