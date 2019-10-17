@@ -49,7 +49,7 @@ ssh-add -K ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa.pub
 open https://github.com/settings/keys
 
-git clone git@github.com:ryanschuhler/system-setup.git ~/repos/
+git clone git@github.com:ryanschuhler/system-setup.git ~/repos
 
 ln -s ~/repos/system-setup/.aliases ~/.aliases
 
@@ -62,7 +62,6 @@ source ~/.bashrc
 ln -s ~/repos/system-setup/.gh.json ~/.gh.json
 
 ln -s ~/repos/system-setup/.gitconfig ~/.gitconfig
-source ~/.gitconfig
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln -s ~/repos/system-setup/.vimrc ~/.vimrc
