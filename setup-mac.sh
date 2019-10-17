@@ -49,7 +49,7 @@ ssh-add -K ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa.pub
 open https://github.com/settings/keys
 
-git clone git@github.com:ryanschuhler/system-setup.git ~/repos
+git clone git@github.com:ryanschuhler/system-setup.git ~/repos/system-setup
 
 ln -s ~/repos/system-setup/.aliases ~/.aliases
 
