@@ -70,10 +70,6 @@ source ~/.vimrc
 vim +PluginInstall +qall
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-ln -s ~/repos/system-setup/.oh-my-zsh ~/.oh-my-zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ln -s ~/repos/system-setup/.zshrc ~/.zshrc
 source ~/.zshrc
-
-# Todo
-# remap caps lock key
