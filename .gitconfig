@@ -34,6 +34,8 @@
     reviewone = !vim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
 	ri = rebase -i
 	rih = rebase -i HEAD~10
+    ra = rebase --abort
+    rc = rebase --continue
 	rh =  reset --hard
 	sa = stash apply
 	sl = stash list
