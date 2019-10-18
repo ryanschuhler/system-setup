@@ -10,10 +10,10 @@ endif
 set clipboard=unnamed
 
 " ================ Colors ==========================
-highlight DiffAdd    ctermfg=white ctermbg=green
-highlight DiffDelete ctermfg=white ctermbg=red
-highlight DiffChange ctermfg=white ctermbg=blue
-highlight DiffText   ctermfg=white ctermbg=magenta
+highlight DiffAdd    ctermfg=black ctermbg=green
+highlight DiffDelete ctermfg=black ctermbg=red
+highlight DiffChange ctermfg=black ctermbg=blue
+highlight DiffText   ctermfg=black ctermbg=magenta
 
 " ================ Hotkeys ==========================
 
