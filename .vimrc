@@ -68,8 +68,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
 call vundle#end() 
-set runtimepath^=~/.vim/bundle/vim-vinegar
