@@ -1,9 +1,6 @@
 name: Automerge
 
-on:
-    workflow_dispatch:
-    schedule:
-        - cron: '* * * * *'
+on: [pull_request]
 
 env:
     MASTER_BRANCH: master
