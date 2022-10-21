@@ -1,62 +1,60 @@
 {
-  "base": "rest/api/2",
-  "hooks": {
-    "pull-request": {
-      "close": {
-        "before": [],
-        "after": ["gh jira {{jira.number.previous}}"]
-      },
-      "fetch": {
-        "before": [],
-        "after": []
-      },
-      "fwd": {
-        "before": [],
-        "after": [
-          "gh jira {{jira.number.current}} --assignee {{options.fwd}} --submittedLink {{forwardedLink}} --transition"
-        ]
-      },
-      "merge": {
-        "before": [],
-        "after": ["gh jira {{jira.number.previous}}"]
-      },
-      "submit": {
-        "before": [],
-        "after": []
-      }
-    }
-  },
-  "host": "issues.liferay.com",
-  "password": "",
-  "port": "",
-  "protocol": "https",
-  "transition": {
-    "Close Issue": {
-      "Fix Version/s": true
-    },
-    "Code Review Request": {
-      "Assignee": {
-        "name": "{{options.assignee}}"
-      },
-      "Git Pull Request": "{{options.submittedLink}}"
-    },
-    "Create Review Request": {
-      "Assignee": {
-        "name": "{{options.assignee}}"
-      },
-      "Git Pull Request": "{{options.submittedLink}}"
-    },
-    "Send for Review": {
-      "Assignee": {
-        "name": "{{options.assignee}}"
-      },
-      "Git Pull Request": "{{options.submittedLink}}"
-    },
-    "Start Progress": {
-      "Assignee": {
-        "name": "{{jira.user}}"
-      }
-    }
-  },
-  "user": ""
+	"base": "rest/api/2",
+	"hooks": {
+		"pull-request": {
+			"close": {
+				"before": [],
+				"after": ["gh jira {{jira.number.previous}}"]
+			},
+			"fetch": {
+				"before": [],
+				"after": []
+			},
+			"fwd": {
+				"before": [],
+				"after": ["gh jira {{jira.number.current}} --assignee {{options.fwd}} --submittedLink {{forwardedLink}} --transition"]
+			},
+			"merge": {
+				"before": [],
+				"after": ["gh jira {{jira.number.previous}}"]
+			},
+			"submit": {
+				"before": [],
+				"after": []
+			}
+		}
+	},
+	"host": "issues.liferay.com",
+	"password": "",
+	"port": "",
+	"protocol": "https",
+	"transition": {
+		"Close Issue": {
+			"Fix Version/s": true
+		},
+		"Code Review Request": {
+			"Assignee": {
+				"name": "{{options.assignee}}"
+			},
+			"Git Pull Request": "{{options.submittedLink}}"
+		},
+		"Create Review Request": {
+			"Assignee": {
+				"name": "{{options.assignee}}"
+			},
+			"Git Pull Request": "{{options.submittedLink}}"
+		},
+		"Send for Review": {
+			"Assignee": {
+				"name": "{{options.assignee}}"
+			},
+			"Git Pull Request": "{{options.submittedLink}}"
+		},
+		"Start Progress": {
+			"Assignee": {
+				"name": "{{jira.user}}"
+			}
+		}
+	},
+	"user": ""
 }
