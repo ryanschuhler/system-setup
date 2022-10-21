@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test": "npx prettier --check ."
+  },
+  "dependencies": {
+    "prettier": "^2.7.1"
+  }
+}
