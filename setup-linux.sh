@@ -3,7 +3,7 @@
 
 # Install Apps
 apt-get install curl git nodejs peco tig vim wget yank zsh
-npm install -g gh gh-jira
+npm install -g gh
 
 # Configure
 git clone https://github.com/ryanschuhler/system-setup.git ~
