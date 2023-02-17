@@ -1,6 +1,6 @@
 " ================ General Config ====================
 
-set number                      "Line numbers are good
+set number
 syntax on
 set laststatus=2
 if has('mouse')
@@ -22,19 +22,6 @@ highlight DiffText   ctermfg=black ctermbg=magenta
 inoremap jk <Esc>
 inoremap kj <Esc>
 
-nnoremap <leader>cd :lcd %:p:h<CR>
-nnoremap <leader>cr :lcd ~/repos<CR>
-nnoremap <leader>cw :lcd ~/repos/lfris-www<CR>
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>tn :tabnext<CR>
-nnoremap <Leader>tc :tabclose<CR>
-nnoremap <Leader>www :Explore ~/repos/lfris-www<CR>
-nnoremap <Leader>~ :Explore ~<CR>
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
 noremap <Leader>w :w<CR>
 noremap <Leader>q :q<CR>
 noremap <Leader>wq :wq<CR>
@@ -62,12 +49,15 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
-" ================ Plugins ===========================
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+" ================ Netrw ===========================
+let g:netrw_keepdir = 0
+let g:netrw_banner = 0
+let g:netrw_localcopydircmd = 'cp -r'
+let g:netrw_altv = 1
+let g:netrw_preview = 1
+let g:netrw_winsize= 30
+let g:netrw_liststyle = 3
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-vinegar'
-call vundle#end() 
+nnoremap <leader>e :Explore<CR>
+nnoremap <leader>v :Vexplore<CR>
+nnoremap <leader>h :Hexplore!<CR>
