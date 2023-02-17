@@ -10,3 +10,4 @@
 
     export PS1="________________________________________________________________________________\n| ${prompt_color_purple}\w ${prompt_color_teal}\$(parse_git_branch) ${prompt_color_reset}=> \n| => "
     export PS2="| => "
+export PATH="$PATH:$HOME/Library/PackageManager/bin"
