@@ -13,52 +13,15 @@
 [difftool]
 	prompt = false
 [alias]
-	aliases = "!git config -l | grep alias | cut -c 7-"
 	br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
-	brD = branch -D
-	ci = commit
-	cia = commit --amend
-	co = checkout
-	cb = rev-parse --abbrev-ref HEAD
-	cob = checkout -b
-	cl = clone
-	cp = cherry-pick
-	dc = diff --cached
-	files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
 	log = log --decorate --graph --date=short
-	l = log
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-	re = remote
-	rea = remote add
 	r = review
-	review = !vim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
-	reviewone = !vim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
-	ri = rebase -i
-	rih = rebase -i HEAD~10
-	ra = rebase --abort
-	rc = rebase --continue
-	rh =  reset --hard
-	sa = stash apply
-	sl = stash list
-	ss = stash save
-	slog = log --pretty=oneline --abbrev-commit
-	st = status
-	stat = !git --no-pager diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
-	po = !git push origin $(git cb)
-	pom = push origin master
-	pu= push upstream
-	pum = push upstream master
-	pr = pull --rebase
-	pro = pull --rebase origin
-	pru = pull --rebase upstream
-	prom = pull --rebase origin master
-	prum = pull --rebase upstream master
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+	rf = reviewfiles
+	rfe = !git reviewfiles | yank | xargs -o vim
+	rs = reviewstat
+	review = !git difftool HEAD ^master 
+	reviewfiles = !git diff --name-only $(git merge-base HEAD "master")
+	reviewstat = !git --no-pager diff --stat $(git merge-base HEAD "master")
 [gpg]
 	format = ssh
 [gpg "ssh"]

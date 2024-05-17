@@ -25,6 +25,7 @@ inoremap kj <Esc>
 noremap <Leader>w :w<CR>
 noremap <Leader>q :q<CR>
 noremap <Leader>wq :wq<CR>
+noremap <Leader>qa :qa<CR>
 
 " ================ Indentation ======================
 
