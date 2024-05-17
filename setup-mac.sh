@@ -7,7 +7,7 @@ xcode-select --install
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Install Apps
-brew install curl gh git nodejs openjdk@8 peco tig vim wget yank zsh
+brew install curl fzf gh git nodejs python3 terminal-notifier tig vim wget zsh
 
 sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk
 
@@ -36,18 +36,20 @@ source ~/.bash_profile
 ln -s ~/repos/system-setup/.bashrc ~/.bashrc
 source ~/.bashrc
 
-ln -s ~/repos/system-setup/.gh.json ~/.gh.json
-
 ln -s ~/repos/system-setup/.gitconfig ~/.gitconfig
 
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-sleep 10s
+ln -s ~/repos/system-setup/.gitconfig ~/.tigrc
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ~/repos/system-setup/.vimrc ~/.vimrc
 source ~/.vimrc
-vim +PluginInstall +qall
+vim +PluginInstall
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 sleep 10s
 ln -s ~/repos/system-setup/.zshrc ~/.zshrc
 source ~/.zshrc
