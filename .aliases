@@ -1,7 +1,0 @@
-alias dxp='function _dr(){ docker pull liferay/dxp:7.4.13-u$1 && docker run -it --name liferay -m 8g -p 8080:8080 --network host liferay/dxp:7.4.13-u$1};_dr'
-alias j8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
-alias j11='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home'
-alias rest="timer 5m && terminal-notifier -message 'Pomodoro' -title 'Break is over! Get back to work 😬' -appIcon '~/Documents/rest.png' -execute 'work'"
-alias vpn='open /Applications/OpenVPN\ Connect/OpenVPN\ Connect.app/ && sudo /Library/Frameworks/OpenVPNConnect.framework/Versions/Current/usr/sbin/ovpnagent' 
-alias wol='wakeonlan 1C:69:7A:A2:4A:2D'
-alias work="timer 25m && terminal-notifier -message 'Pomodoro' -title 'Work Timer is up! Take a Break 😊' -appIcon '~/Documents/work.png' -execute 'rest'"
