@@ -1,39 +1,65 @@
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
-export PATH=$HOME/bin:/usr/local/bin:$HOME/Library/PackageManager/bin:$PATH
-export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/1password/agent.sock
 export ZSH=~/.oh-my-zsh
-export ANT_OPTS=-Xmx2560m
 
 plugins=(
-    git
-    zsh-autosuggestions
-    zsh-completions
-    zsh-syntax-highlighting
+	git
+	zsh-autosuggestions
+	zsh-completions
+	zsh-syntax-highlighting
 )
 
-ZSH_THEME="minimal"
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-HISTFILE="$HOME/.zsh_history"
-# Display timestamps for each command
 HIST_STAMPS="%T %d.%m.%y"
-
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=10000000
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+ZSH_THEME="minimal"
 
-# Ignore these commands in history
-HISTORY_IGNORE="(ls|pwd|cd)*"
-
-# Write the history file in the ':start:elapsed;command' format.
 setopt EXTENDED_HISTORY
-
-# Do not record an event starting with a space.
+setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
-
-# Don't store history commands
 setopt HIST_NO_STORE
 
+function execute_gradlew {
+	if [ -e gradlew ]
+	then
+		./gradlew ${@}
+	elif [ -e ../gradlew ]
+	then
+		../gradlew ${@}
+	elif [ -e ../../gradlew ]
+	then
+		../../gradlew ${@}
+	elif [ -e ../../../gradlew ]
+	then
+		../../../gradlew ${@}
+	elif [ -e ../../../../gradlew ]
+	then
+		../../../../gradlew ${@}
+	elif [ -e ../../../../../gradlew ]
+	then
+		../../../../../gradlew ${@}
+	elif [ -e ../../../../../../gradlew ]
+	then
+		../../../../../../gradlew ${@}
+	elif [ -e ../../../../../../../gradlew ]
+	then
+		../../../../../../../gradlew ${@}
+	elif [ -e ../../../../../../../../gradlew ]
+	then
+		../../../../../../../../gradlew ${@}
+	elif [ -e ../../../../../../../../../gradlew ]
+	then
+		../../../../../../../../../gradlew ${@}
+	else
+		echo "Unable to find locate Gradle wrapper."
+	fi
+}
+
+function gw {
+	execute_gradlew "${@//\//:}" --daemon
+}
+
 source $ZSH/oh-my-zsh.sh
-source ~/.aliases

@@ -1,30 +1,15 @@
-[user]
-	name = Ryan Schuhler 
-	email = ryan.schuhler@liferay.com
-[core]
-	editor = vim
-	autocrlf = input
-	excludesfile = /Users/ryan/.gitignore_global
-[diff]
-	tool = vimdiff
-[merge]
-	tool = vimdiff
-	conflictStyle = zdiff3
-[difftool]
-	prompt = false
-[alias]
-	br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
-	log = log --decorate --graph --date=short
-	r = review
-	rf = reviewfiles
-	rfe = !git reviewfiles | yank | xargs -o vim
-	rs = reviewstat
-	review = !git difftool HEAD ^master 
-	reviewfiles = !git diff --name-only $(git merge-base HEAD "master")
-	reviewstat = !git --no-pager diff --stat $(git merge-base HEAD "master")
-[gpg]
-	format = ssh
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [commit]
 	gpgsign = true
+[core]
+	autocrlf = input
+	editor = vim
+	ignorecase = false
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[gpg]
+	format = ssh
+[merge]
+	conflictStyle = zdiff3
+	tool = vimdiff
