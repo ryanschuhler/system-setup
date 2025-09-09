@@ -57,7 +57,23 @@ let g:netrw_altv = 1
 let g:netrw_preview = 1
 let g:netrw_winsize= 30
 let g:netrw_liststyle = 3
+let NERDTreeShowHidden=1
 
 nnoremap <leader>e :Explore<CR>
 nnoremap <leader>v :Vexplore<CR>
 nnoremap <leader>h :Hexplore!<CR>
+nnoremap <C-p> :Files<cr>
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>s :BLines<cr>
+
+" ================ Vim Plug ===========================
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'scrooloose/nerdtree'
+
+call plug#end()
