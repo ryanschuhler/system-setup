@@ -5,12 +5,14 @@
 DOTFILES_REPO="https://github.com/ryanschuhler/system-setup.git"
 DOTFILES_DIR="${HOME}/repos/system-setup"
 SYSTEM_PACKAGES="
+	btop
+	ant
 	build-essential
 	ca-certificates
 	curl
 	git
-	htop
 	jq
+	rsync
 	nodejs
 	openvpn
 	python3
@@ -20,6 +22,7 @@ SYSTEM_PACKAGES="
 	tree
 	unzip
 	vim
+	wakeonlan
 	wget
 	zsh"
 
@@ -70,18 +73,18 @@ clone_dotfiles_repo() {
 }
 
 install_1password() {
-	if command -v 1password >/dev/null 2>&1; then
-		_info "1Password is already installed."
+	if command -v 1password >/dev/null 2>&1 && command -v op >/dev/null 2>&1; then
+		_info "1Password and 1Password CLI are already installed."
 		return
 	fi
-	_info "Installing 1Password..."
+	_info "Installing 1Password and 1Password CLI..."
 	curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
 
 	echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | tee /etc/apt/sources.list.d/1password.list > /dev/null
 
 	apt-get update
-	apt-get install -y 1password
-	_info "1Password installed."
+	apt-get install -y 1password 1password-cli
+	_info "1Password and 1Password CLI installed."
 }
 
 install_bitwarden() {
@@ -113,8 +116,21 @@ install_docker() {
 	_info "User '$(logname)' added to the docker group. You will need to log out and back in for this to take effect."
 }
 
+install_gh() {
+	if command -v gh >/dev/null 2>&1; then
+		_info "GitHub CLI (gh) is already installed."
+		return
+	fi
+	_info "Installing GitHub CLI (gh)..."
+	curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+	apt-get update
+	apt-get install -y gh
+	_info "GitHub CLI (gh) installed."
+}
+
 install_k8s_tools() {
-	_info "Installing Kubernetes tools (k3s, Helm, Stern)..."
+	_info "Installing Kubernetes tools (k3s, Helm, Stern, k9s)..."
 	
 	if command -v k3s >/dev/null 2>&1; then
 		_info "k3s is already installed."
@@ -144,6 +160,35 @@ install_k8s_tools() {
 			_warn "Could not determine latest Stern version. Skipping."
 		fi
 	fi
+
+	if command -v k9s >/dev/null 2>&1; then
+		_info "k9s is already installed."
+	else
+		_info "Installing k9s..."
+		local K9S_LATEST_URL
+		K9S_LATEST_URL=$(curl -s "https://api.github.com/repos/derailed/k9s/releases/latest" | grep "browser_download_url.*linux_amd64.tar.gz" | cut -d '"' -f 4)
+		if [ -n "${K9S_LATEST_URL}" ]; then
+			curl -Lo k9s.tar.gz "${K9S_LATEST_URL}"
+			tar -xvf k9s.tar.gz k9s
+			mv k9s /usr/local/bin/k9s
+			rm k9s.tar.gz
+			_info "k9s installed."
+		else
+			_warn "Could not determine latest k9s version. Skipping."
+		fi
+	fi
+}
+
+install_obsidian() {
+	_info "Installing Obsidian..."
+	local obsidian_url
+	obsidian_url=$(curl -s "https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest" | grep "browser_download_url.*amd64.deb" | cut -d '"' -f 4)
+
+	if [ -n "${obsidian_url}" ]; then
+		_install_deb_package "obsidian" "${obsidian_url}"
+	else
+		_warn "Could not determine latest Obsidian .deb package. Skipping."
+	fi
 }
 
 install_opencode() {
@@ -159,6 +204,19 @@ install_slack() {
 	local slack_version="4.38.125"
 	local slack_url="https://downloads.slack-edge.com/releases/linux/${slack_version}/prod/x64/slack-desktop-${slack_version}-amd64.deb"
 	_install_deb_package "slack" "${slack_url}"
+}
+
+install_spotify() {
+	if command -v spotify >/dev/null 2>&1; then
+		_info "Spotify is already installed."
+		return
+	fi
+	_info "Installing Spotify..."
+	curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+	echo "deb http://repository.spotify.com stable non-free" | tee /etc/apt/sources.list.d/spotify.list > /dev/null
+	apt-get update
+	apt-get install -y spotify-client
+	_info "Spotify installed."
 }
 
 install_system_packages() {
@@ -273,10 +331,13 @@ main() {
 	link_dotfiles
 
 	install_1password
+	install_gh
 	install_bitwarden
 	install_docker
 	install_k8s_tools
 	install_opencode
+	install_obsidian
+	install_spotify
 	install_slack
 
 	setup_git
